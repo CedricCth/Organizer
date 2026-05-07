@@ -1,6 +1,6 @@
 # Diagrams
 
-Rendered architecture diagrams for the Couples App. The PNGs in this folder are the canonical rendered versions referenced from `ARCHITECTURE.md`.
+Rendered architecture diagrams for the Couples App. The PNGs in this folder are the canonical rendered versions referenced from [`../docs/ARCHITECTURE.md`](../docs/ARCHITECTURE.md).
 
 | File | What it shows |
 |---|---|
@@ -28,7 +28,7 @@ Each diagram is a `render_*` function in `render.py`. The shared style is in the
 
 ## Why not Mermaid / draw.io / PlantUML?
 
-The original ARCHITECTURE.md uses Mermaid for in-document rendering on platforms that support it (GitHub, etc.). The PNGs in this folder exist for environments that don't render Mermaid, and for sharing the architecture as an image (e.g., dropping into a slide).
+The original [`../docs/ARCHITECTURE.md`](../docs/ARCHITECTURE.md) uses Mermaid for in-document rendering on platforms that support it (GitHub, etc.). The PNGs in this folder exist for environments that don't render Mermaid, and for sharing the architecture as an image (e.g., dropping into a slide).
 
 `matplotlib` is the renderer because:
 - It runs offline with no Chromium / Java / network dependencies

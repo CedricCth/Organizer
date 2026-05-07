@@ -1,9 +1,9 @@
 # Architecture — Couples App
 
-> Source of truth for **how the system is structured**. Read this before adding a new feature or touching layer boundaries. Any change to architecture rules must come with an ADR in `DECISIONS.md`.
+> Source of truth for **how the system is structured**. Read this before adding a new feature or touching layer boundaries. Any change to architecture rules must come with a new ADR in [`./adr/`](./adr/).
 > Last updated: 2026-05-07
 >
-> **Diagrams** are rendered to PNG in [`./diagrams/`](./diagrams/) and embedded inline below. The Mermaid source is preserved in collapsible blocks for in-document editing. Re-render with `python3 diagrams/render.py`.
+> **Diagrams** are rendered to PNG in [`../diagrams/`](../diagrams/) and embedded inline below. The Mermaid source is preserved in collapsible blocks for in-document editing. Re-render with `python3 diagrams/render.py` from the repo root.
 
 ---
 
@@ -154,11 +154,16 @@ couples-app/
 │   └── e2e/                            # Playwright
 │
 ├── CLAUDE.md
-├── FEATURES.md
-├── TECH_STACK.md
-├── DECISIONS.md
-├── ARCHITECTURE.md                     # this file
-├── WORKFLOW.md
+├── README.md
+├── docs/
+│   ├── FEATURES.md
+│   ├── BACKLOG.md
+│   ├── TECH_STACK.md
+│   ├── ARCHITECTURE.md                 # this file
+│   ├── WORKFLOW.md
+│   └── adr/                            # one file per Architecture Decision Record
+│       ├── README.md
+│       └── NNNN-<slug>.md
 └── package.json
 ```
 
@@ -168,7 +173,7 @@ couples-app/
 
 The big picture: who uses the app and what external services it depends on.
 
-![C4 Level 1 — System Context](./diagrams/1_context.png)
+![C4 Level 1 — System Context](../diagrams/1_context.png)
 
 <details><summary>Mermaid source (for editing in-document)</summary>
 
@@ -201,7 +206,7 @@ flowchart TB
 
 Deployable units and their wire protocols.
 
-![C4 Level 2 — Containers](./diagrams/2_container.png)
+![C4 Level 2 — Containers](../diagrams/2_container.png)
 
 <details><summary>Mermaid source</summary>
 
@@ -244,7 +249,7 @@ flowchart TB
 
 How the four-layer architecture shows up inside the Next.js container.
 
-![C4 Level 3 — Components](./diagrams/3_component.png)
+![C4 Level 3 — Components](../diagrams/3_component.png)
 
 <details><summary>Mermaid source</summary>
 
@@ -304,7 +309,7 @@ Note the implementation arrow: `Repos -.implements.-> Iface`. The repository int
 
 ## Sequence diagram — Signup
 
-![Sequence — Signup](./diagrams/4_seq_signup.png)
+![Sequence — Signup](../diagrams/4_seq_signup.png)
 
 <details><summary>Mermaid source</summary>
 
@@ -344,7 +349,7 @@ sequenceDiagram
 
 ## Sequence diagram — Couple pairing (invite + redeem)
 
-![Sequence — Couple pairing](./diagrams/5_seq_pairing.png)
+![Sequence — Couple pairing](../diagrams/5_seq_pairing.png)
 
 <details><summary>Mermaid source</summary>
 
@@ -394,7 +399,7 @@ sequenceDiagram
 
 ## Sequence diagram — Create todo with realtime fan-out
 
-![Sequence — Create todo with realtime](./diagrams/6_seq_todo.png)
+![Sequence — Create todo with realtime](../diagrams/6_seq_todo.png)
 
 <details><summary>Mermaid source</summary>
 

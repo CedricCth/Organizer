@@ -107,7 +107,7 @@ The smallest thing that delivers the core value: two paired partners can share a
 ## Explicitly Out of Scope (for now)
 
 - Group households or roommate scenarios with 3+ people
-- Native iOS / Android apps (we're a PWA — see DECISIONS.md ADR-001)
+- Native iOS / Android apps (we're a PWA — see [`./adr/0001-pwa-app-type.md`](./adr/0001-pwa-app-type.md))
 - Smartwatch apps
 - Public sharing of any kind
 - Social features beyond the couple

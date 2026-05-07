@@ -1,6 +1,6 @@
 # Tech Stack — Couples App
 
-> Source of truth for **what we are building it with**. Always read this before pulling in a new library, framework, or service. If a request implies tech that isn't here, raise it as an ADR in `DECISIONS.md` first.
+> Source of truth for **what we are building it with**. Always read this before pulling in a new library, framework, or service. If a request implies tech that isn't here, raise it as a new ADR in [`./adr/`](./adr/) first.
 > Last reviewed: 2026-05-07
 
 ---
@@ -37,7 +37,7 @@
 - **Supabase** gives us auth + Postgres + realtime + storage in one. Row-Level Security means "Couple A cannot see Couple B's todos" is enforced in the database, not just in app code — a much stronger guarantee.
 - **Vercel + Supabase Cloud** means zero infra work. Push to GitHub, it's live on HTTPS with a real domain.
 
-The full case for each major choice (with alternatives considered) lives in `DECISIONS.md`.
+The full case for each major choice (with alternatives considered) lives in [`./adr/`](./adr/).
 
 ---
 
@@ -88,15 +88,20 @@ couples-app/
 │   └── e2e/                            # Playwright
 │
 ├── CLAUDE.md
-├── ARCHITECTURE.md
-├── FEATURES.md
-├── TECH_STACK.md
-├── DECISIONS.md
-├── WORKFLOW.md
+├── README.md
+├── docs/
+│   ├── ARCHITECTURE.md
+│   ├── FEATURES.md
+│   ├── BACKLOG.md
+│   ├── TECH_STACK.md                   # this file
+│   ├── WORKFLOW.md
+│   └── adr/                            # one file per Architecture Decision Record
+│       ├── README.md
+│       └── NNNN-<slug>.md
 └── package.json
 ```
 
-The dependency rule (`infrastructure → adapters → application → domain`, always inward) is documented in `ARCHITECTURE.md` and codified in `CLAUDE.md` § Architecture rules.
+The dependency rule (`infrastructure → adapters → application → domain`, always inward) is documented in [`./ARCHITECTURE.md`](./ARCHITECTURE.md) and codified in [`../CLAUDE.md`](../CLAUDE.md) § Architecture rules.
 
 ---
 

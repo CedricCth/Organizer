@@ -11,7 +11,25 @@ A **Progressive Web App** for couples and married partners to share household to
 - **Owner:** Stef
 - **Audience:** two paired partners, that's it
 - **MVP focus:** auth + couple pairing + shared todos
-- **Status as of 2026-05-07:** planning complete; implementation has not started
+- **Status as of 2026-05-07:** planning complete; implementation has begun — `CA-26` (init Next.js) is the first task in progress under EPIC-01.
+
+---
+
+## Live task state lives in Jira
+
+**The current state of work — what's in progress, what's done, what's next — is in Jira, not in this repo.** `docs/BACKLOG.md` is the strategic plan (priorities, scope, DoD); Jira is the operational source of truth (status, assignments, day-to-day tasks).
+
+- **Jira site:** `appsc.atlassian.net` · **Cloud ID:** `ef336de3-f310-4917-bd57-56c904a30f31` · **Project key:** `CA` ("couples app")
+- **Structure:** every BACKLOG epic (EPIC-01…EPIC-25) is a Jira Epic (`CA-1`…`CA-25`); each epic has child Tasks for the actual work.
+- **Look it up via the Atlassian MCP**, not by guessing. Examples:
+  - All epics: `searchJiraIssuesUsingJql` with `project = CA AND issuetype = Epic ORDER BY rank ASC`
+  - What's in progress right now: `project = CA AND status = "In Progress"`
+  - Tasks for a specific epic: `project = CA AND parent = CA-1` (replace with the epic key)
+  - Full detail on one ticket: `getJiraIssue` with the issue key
+- **Before starting any work**, check Jira for: (a) what's already In Progress, (b) what's the next To Do task under the current epic, (c) whether any task you're about to do is already covered.
+- **When work ships**, transition the Jira task to Done (`transitionJiraIssue`) and add a brief result comment if useful (`addCommentToJiraIssue`). Then update `docs/BACKLOG.md` / `docs/FEATURES.md` per the doc rules.
+- **If you'd add a new task**, create it in Jira under the right Epic parent (`createJiraIssue` with `parent` set to the epic key) — don't track work only in chat or in the local TodoList.
+- **If `docs/BACKLOG.md` and Jira disagree**, raise it with Stef. Don't silently mutate one to match the other.
 
 ---
 
@@ -19,21 +37,21 @@ A **Progressive Web App** for couples and married partners to share household to
 
 When implementing or discussing **any feature**, always start by reading the file(s) below that apply:
 
-- **[`FEATURES.md`](./FEATURES.md)** — the source of truth for **what's in scope**, what's MVP vs later, and what's out of scope. If a request is ambiguous about scope, check here first. If a feature isn't listed, it isn't approved.
-- **[`BACKLOG.md`](./BACKLOG.md)** — the source of truth for **what we're building next, in what order**. Epics are prioritized (P0/P1/P2/P3) with sizes, dependencies, and Definitions of Done. Pull from the top; don't cherry-pick.
-- **[`TECH_STACK.md`](./TECH_STACK.md)** — the source of truth for **what tools, libraries, and versions** to use. Do not introduce new tools without updating this file via an ADR.
-- **[`ARCHITECTURE.md`](./ARCHITECTURE.md)** — the source of truth for **how the code is structured**: layer rules, the dependency direction, C4 diagrams, sequence diagrams, the DI pattern. Read before writing code.
-- **[`DECISIONS.md`](./DECISIONS.md)** — the **why** behind major technical and architectural choices. Read before challenging or changing a major decision. Add a new ADR if the decision is changing.
-- **[`WORKFLOW.md`](./WORKFLOW.md)** — **how Stef and Claude work together** on this project: the process for adding features, making decisions, structuring sessions.
+- **[`docs/FEATURES.md`](./docs/FEATURES.md)** — the source of truth for **what's in scope**, what's MVP vs later, and what's out of scope. If a request is ambiguous about scope, check here first. If a feature isn't listed, it isn't approved.
+- **[`docs/BACKLOG.md`](./docs/BACKLOG.md)** — the source of truth for **what we're building next, in what order**. Epics are prioritized (P0/P1/P2/P3) with sizes, dependencies, and Definitions of Done. Pull from the top; don't cherry-pick.
+- **[`docs/TECH_STACK.md`](./docs/TECH_STACK.md)** — the source of truth for **what tools, libraries, and versions** to use. Do not introduce new tools without updating this file via an ADR.
+- **[`docs/ARCHITECTURE.md`](./docs/ARCHITECTURE.md)** — the source of truth for **how the code is structured**: layer rules, the dependency direction, C4 diagrams, sequence diagrams, the DI pattern. Read before writing code.
+- **[`docs/adr/`](./docs/adr/)** — the **why** behind major technical and architectural choices. One file per decision. Read before challenging or changing a major decision. Add a new ADR if the decision is changing — see [`docs/adr/README.md`](./docs/adr/README.md) for the template and conventions.
+- **[`docs/WORKFLOW.md`](./docs/WORKFLOW.md)** — **how Stef and Claude work together** on this project: the process for adding features, making decisions, structuring sessions.
 
-If you're about to implement, plan, or recommend something on this project, you should have read at least `FEATURES.md`, `TECH_STACK.md`, and `ARCHITECTURE.md` for the relevant area before responding.
+If you're about to implement, plan, or recommend something on this project, you should have read at least `docs/FEATURES.md`, `docs/TECH_STACK.md`, and `docs/ARCHITECTURE.md` for the relevant area before responding.
 
 ---
 
 ## Hard rules
 
 1. **Do not invent features.** If a feature isn't in `FEATURES.md`, stop and ask Stef before implementing it. Add it to `FEATURES.md` if approved.
-2. **Do not swap tech.** If a request implies a tool, library, or service that isn't in `TECH_STACK.md`, raise it as a candidate ADR in `DECISIONS.md` and propose it to Stef before adopting.
+2. **Do not swap tech.** If a request implies a tool, library, or service that isn't in `docs/TECH_STACK.md`, raise it as a new ADR in `docs/adr/` and propose it to Stef before adopting.
 3. **Do not violate the architecture.** See § Architecture rules below — these are non-negotiable.
 4. **Update the docs in the same change.** When a feature ships, update its line in `FEATURES.md`. When a decision is made, write the ADR. Code changes that don't update the relevant doc are incomplete.
 5. **Security is first-class.** This app stores relationship data. Default to: HTTPS, Row-Level Security on every user-data table, httpOnly+Secure cookies, strong password requirements, no PII in logs, no third-party analytics. See `TECH_STACK.md` § Security baseline.
@@ -131,24 +149,25 @@ Quick mental checklist:
 - **Tests:** Vitest + Playwright
 - **Package manager:** pnpm
 
-Full detail and rationale in `TECH_STACK.md` and `DECISIONS.md`.
+Full detail and rationale in `docs/TECH_STACK.md` and `docs/adr/`.
 
 ---
 
 ## Repo layout (target)
 
-See `TECH_STACK.md` § Repository layout. Once the repo is bootstrapped, this section can be made authoritative.
+See `docs/TECH_STACK.md` § Repository layout. Once the repo is bootstrapped, this section can be made authoritative.
 
 ---
 
 ## How to start any session
 
 1. Read this file.
-2. Skim `FEATURES.md`, `TECH_STACK.md`, `ARCHITECTURE.md`, and `DECISIONS.md` for context relevant to the request.
-3. If the request involves writing or changing code, also open `src/features/todos/` — that's the canonical pattern to mirror.
-4. Confirm the scope of the task with Stef before writing code or making non-trivial recommendations.
-5. Plan before coding (use a TodoList for any non-trivial change).
-6. Update relevant docs as part of the change.
+2. **Check Jira for live state** via the Atlassian MCP — what's In Progress, what's the next To Do under the current epic. See § Live task state lives in Jira above.
+3. Skim `docs/FEATURES.md`, `docs/TECH_STACK.md`, `docs/ARCHITECTURE.md`, and the ADRs in `docs/adr/` for context relevant to the request.
+4. If the request involves writing or changing code, also open `src/features/todos/` — that's the canonical pattern to mirror.
+5. Confirm the scope of the task with Stef before writing code or making non-trivial recommendations.
+6. Plan before coding (use a TodoList for any non-trivial change, and keep the matching Jira task transitioned correctly).
+7. Update relevant docs as part of the change. When the Jira task is done, transition it to Done.
 
 ---
 
@@ -160,5 +179,5 @@ See `TECH_STACK.md` § Repository layout. Once the repo is bootstrapped, this se
 - Always run `pnpm typecheck` and the relevant tests before declaring a task done.
 - A new use case is not "done" until R11 is satisfied (unit test using a fake repo).
 - When generating SQL migrations for Supabase, place them under `supabase/migrations/` and ensure RLS is enabled on every new user-data table.
-- If a change alters the architecture (new layer, new boundary, new repository interface), update `ARCHITECTURE.md` *and* re-render the diagrams (`python3 diagrams/render.py`).
+- If a change alters the architecture (new layer, new boundary, new repository interface), update `docs/ARCHITECTURE.md` *and* re-render the diagrams (`python3 diagrams/render.py`).
 - Never store secrets in the repo. All env vars go in Vercel + Supabase config.
