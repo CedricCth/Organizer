@@ -12,11 +12,12 @@
 | [0004](./0004-vercel-hosting.md) | Hosting: Vercel (frontend) + Supabase Cloud (backend) | Accepted |
 | [0005](./0005-mvp-scope.md) | MVP scope: Auth + Shared Todos only | Accepted |
 | [0006](./0006-clean-architecture.md) | Architecture: Pragmatic Clean Architecture + C4 + functional DI | Accepted |
+| [0007](./0007-docker-local-dev.md) | Docker for local development | Accepted |
 
 ## Conventions
 
 - **Filename:** `NNNN-short-slug.md`, four-digit zero-padded number, lowercase kebab-case slug.
-- **Numbering:** strictly sequential. The next ADR is `0007-…`. Numbers are never reused.
+- **Numbering:** strictly sequential. The next ADR is `0008-…`. Numbers are never reused.
 - **Status values:** `Proposed` · `Accepted` · `Deprecated` · `Superseded by ADR-NNNN`.
 - **Never rewrite a past ADR.** If a decision changes, write a new ADR that says "Supersedes ADR-NNNN" and update the older ADR's status to "Superseded by ADR-MMMM". Keep the trail.
 - **Length:** roughly one page. If it's longer, you probably have a system design doc, not an ADR.

@@ -25,6 +25,7 @@
 | Package manager | **pnpm** | Fast, disk-efficient |
 | Lint / Format | **ESLint** + **Prettier** | Standard configs |
 | Testing | **Vitest** (unit) + **Playwright** (e2e) | |
+| Local dev environment | **Docker + docker-compose** | Reproducible local setup (see [`./adr/0007-docker-local-dev.md`](./adr/0007-docker-local-dev.md)). Production stays on Vercel — Vercel ignores Dockerfiles. |
 | PWA tooling | **next-pwa** (or built-in Next.js PWA support if mature enough at install time) | Service worker + manifest |
 | Web push | **web-push** library + Supabase function | iOS 16.4+, Android, Desktop |
 
