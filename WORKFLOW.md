@@ -18,6 +18,7 @@
 |---|---|---|
 | `CLAUDE.md` | Orientation for any Claude session | Rarely. When the rules of working on this project change. |
 | `FEATURES.md` | What we are building | Every time a feature is planned, scoped, or shipped. |
+| `BACKLOG.md` | What we are building **next**, in what order | When an epic is added, started, finished, or re-prioritized. |
 | `TECH_STACK.md` | What we are building it with | When we adopt or replace a tool / library. |
 | `ARCHITECTURE.md` | How the code is structured (layers, diagrams, DI pattern) | When layer rules, the dependency direction, or the diagrams change. |
 | `DECISIONS.md` | Why we chose what we chose | Every time a non-trivial technical decision is made. |

@@ -20,6 +20,7 @@ A **Progressive Web App** for couples and married partners to share household to
 When implementing or discussing **any feature**, always start by reading the file(s) below that apply:
 
 - **[`FEATURES.md`](./FEATURES.md)** — the source of truth for **what's in scope**, what's MVP vs later, and what's out of scope. If a request is ambiguous about scope, check here first. If a feature isn't listed, it isn't approved.
+- **[`BACKLOG.md`](./BACKLOG.md)** — the source of truth for **what we're building next, in what order**. Epics are prioritized (P0/P1/P2/P3) with sizes, dependencies, and Definitions of Done. Pull from the top; don't cherry-pick.
 - **[`TECH_STACK.md`](./TECH_STACK.md)** — the source of truth for **what tools, libraries, and versions** to use. Do not introduce new tools without updating this file via an ADR.
 - **[`ARCHITECTURE.md`](./ARCHITECTURE.md)** — the source of truth for **how the code is structured**: layer rules, the dependency direction, C4 diagrams, sequence diagrams, the DI pattern. Read before writing code.
 - **[`DECISIONS.md`](./DECISIONS.md)** — the **why** behind major technical and architectural choices. Read before challenging or changing a major decision. Add a new ADR if the decision is changing.
